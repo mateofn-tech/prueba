@@ -5,12 +5,12 @@ let bocaActual = 0;
 let pardales = []; // array de conjuntos
 
 function setup() {
-  createCanvas(1900, 1800); 
-  textSize(16); // emojis más pequeños para que quepan
+  createCanvas(400, 400);
+  textSize(16);
 
   // Creamos 4 conjuntos, separados horizontalmente
   for (let i = 0; i < 4; i++) {
-    pardales.push(new Pardal(i * 100)); // 100 px de separación
+    pardales.push(new Pardal(i * 100));
   }
 }
 
@@ -39,13 +39,13 @@ class Pardal {
   constructor(offsetX) {
     this.x = offsetX;
     this.y = 50;
-    this.escala = 0.4; // escala más pequeña para caber en el lienzo
-    this.vel = 1.5;    // velocidad más lenta
+    this.escala = 0.4;
+    this.vel = 1.5;
   }
 
   mover() {
     this.x += this.vel;
-    if (this.x > width - 100 || this.x < 0) { // límite adaptado a la escala
+    if (this.x > width - 100 || this.x < 0) {
       this.vel *= -1;
     }
   }
@@ -95,3 +95,8 @@ class Pardal {
     pop();
   }
 }
+
+    pop();
+  }
+}
+
