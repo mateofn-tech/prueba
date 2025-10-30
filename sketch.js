@@ -10,7 +10,7 @@ function setup() {
 
   // Creamos 4 conjuntos, separados horizontalmente
   for (let i = 0; i < 4; i++) {
-    pardales.push(new Pardal(i * 100));
+    pardales.push(new Pardal(i * 100)); // separación 100px
   }
 }
 
@@ -39,7 +39,7 @@ class Pardal {
   constructor(offsetX) {
     this.x = offsetX;
     this.y = 50;
-    this.escala = 0.4;
+    this.escala = 0.5; // escala un poco mayor
     this.vel = 1.5;
   }
 
@@ -52,51 +52,45 @@ class Pardal {
 
   show() {
     push();
-    translate(this.x + 50, this.y + 50);
+    translate(this.x + 40, this.y + 40); // posición inicial ajustada
     scale(this.escala);
 
     stroke(0);
 
-    // Triángulo rosa
+    // Triángulo rosa (base abajo)
     fill(255, 105, 180);
-    triangle(50, 300, 150, 300, 100, 200);
+    triangle(0, 60, 60, 60, 30, 20);
 
     // Naranja con degradado
     noStroke();
-    for (let r = 50; r > 0; r--) {
-      let inter = map(r, 50, 0, 0, 1);
+    for (let r = 25; r > 0; r--) {
+      let inter = map(r, 25, 0, 0, 1);
       let c = lerpColor(color(255, 140, 0), color(255, 200, 0), inter);
       fill(c);
-      ellipse(200, 250, r*2, r*2);
+      ellipse(80, 50, r*2, r*2);
     }
 
     // Tallo y hoja
     stroke(34, 139, 34);
-    strokeWeight(4);
-    line(200, 200, 200, 220);
-
+    strokeWeight(3);
+    line(80, 25, 80, 10); // tallo
     fill(34, 139, 34);
     noStroke();
-    ellipse(210, 200, 20, 10);
+    ellipse(90, 10, 15, 8); // hoja
 
     strokeWeight(1);
 
     // Ojos
     fill(0);
     noStroke();
-    ellipse(185, 240, 10, 10);
-    ellipse(215, 240, 10, 10);
+    ellipse(70, 50, 5, 5); // ojo izquierdo
+    ellipse(90, 50, 5, 5); // ojo derecho
 
     // Boca
     textAlign(CENTER, CENTER);
-    textSize(16);
-    text(bocas[bocaActual], 200, 260);
+    textSize(12);
+    text(bocas[bocaActual], 80, 65);
 
     pop();
   }
 }
-
-    pop();
-  }
-}
-
